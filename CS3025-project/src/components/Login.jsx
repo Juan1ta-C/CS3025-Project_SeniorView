@@ -2,7 +2,7 @@ import { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
 import { toast } from 'sonner';
 
-export default function Login() {
+export default function Login({ onLogin }) {
   const [isSignUp, setIsSignUp] = useState(false);
   const [name, setName] = useState('');
   const [email, setEmail] = useState('');
@@ -18,7 +18,7 @@ export default function Login() {
   const [confirmPasswordError, setConfirmPasswordError] = useState('');
   const [studentId, setStudentId] = useState('');
 
-  const emailFormat = (email) => {
+  const validateEmail = (email) => {
     const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
     return emailRegex.test(email);
   };
@@ -75,7 +75,7 @@ export default function Login() {
     if (!email) {
       setEmailError('Email is required');
       hasError = true;
-    } else if (!emailFormat(email)) {
+    } else if (!validateEmail(email)) {
       setEmailError('Please enter a valid email');
       hasError = true;
     }
@@ -109,17 +109,27 @@ export default function Login() {
     setTimeout(() => {
       setIsLoading(false);
       const userType = isStudent ? 'student' : 'senior';
+      const displayName = isSignUp ? name : email.split('@')[0]; // Use name for signup, email prefix for login
       toast.success(isSignUp ? 'Sign up successful!' : 'Login successful!', {
         description: isSignUp ? `Welcome, ${name}! Registered as ${userType}.` : `Welcome back!`,
       });
+      
+      // Call the onLoginSuccess callback with user data
+      onLoginSuccess({
+        name: displayName,
+        email: email,
+        isStudent: isStudent,
+        studentId: studentId,
+      });
+      
       // Reset form
-      setName('');
       setEmail('');
       setPassword('');
       setConfirmPassword('');
       setIsStudent(false);
       setShowPassword(false);
       setShowConfirmPassword(false);
+      setStudentId('');
     }, 1500);
   };
 
@@ -127,6 +137,19 @@ export default function Login() {
     toast.info('Password Reset', {
       description: 'A password reset link will be sent to your email.',
     });
+  };
+
+  const resetForm = () => {
+    setName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
+    setIsStudent(false);
+    setStudentId('');
+    setNameError('');
+    setEmailError('');
+    setPasswordError('');
+    setConfirmPasswordError('');
   };
 
   return (
@@ -148,23 +171,14 @@ export default function Login() {
               }`}
               onClick={() => {
                 setIsSignUp(false);
-                setName('');
-                setEmail('');
-                setPassword('');
-                setConfirmPassword('');
-                setIsStudent(false);
-                setStudentId('');
-                setNameError('');
-                setEmailError('');
-                setPasswordError('');
-                setConfirmPasswordError('');
+                resetForm();
               }}
             >
               LOGIN
             </button>
           </div>
           
-          {/* SIGN IN Button */}
+          {/* SIGN UP Button */}
           <div className="relative">
             <button 
               className={`px-8 md:px-10 lg:px-12 py-3 md:py-4 rounded-r-full md:rounded-l-none transition-all duration-300 font-semibold ${
@@ -174,19 +188,10 @@ export default function Login() {
               }`}
               onClick={() => {
                 setIsSignUp(true);
-                setName('');
-                setEmail('');
-                setPassword('');
-                setConfirmPassword('');
-                setIsStudent(false);
-                setStudentId('');
-                setNameError('');
-                setEmailError('');
-                setPasswordError('');
-                setConfirmPasswordError('');
+                resetForm();
               }}
             >
-              SIGN IN
+              SIGN UP
             </button>
           </div>
         </div>

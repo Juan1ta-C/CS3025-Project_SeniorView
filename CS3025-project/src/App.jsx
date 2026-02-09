@@ -1,12 +1,12 @@
 import { useState } from 'react';
 import { Mail, Lock, Eye, EyeOff, User } from 'lucide-react';
-import { toast } from 'sonner';
+import { toast, Toaster} from 'sonner';
 import Login from "./components/Login";
 import Homepage from "./components/Homepage";
 
 export default function App() {
-  [loggedIn, setLoggedIn] = useState(false);
-  [credentials, setCredentials] = useState(null); 
+ const [isLoggedIn, setLoggedIn] = useState(false);
+ const [credentials, setCredentials] = useState(null); 
 
   const handleLogin = (user) => {
     setLoggedIn(true);
@@ -15,7 +15,7 @@ export default function App() {
  const handleLogout = () => {
   setLoggedIn(false);
   setCredentials(null);
-  toast.success("Logged out successfully!", {
+  toast.info("Logged out successfully!", {
     description: "You have logged out of your account.",
   });
   
@@ -23,7 +23,7 @@ export default function App() {
 
  return (
   <>
-    {loggedIn ? (
+    {isLoggedIn ? (
       <Homepage userName={credentials?.name} onLogout={handleLogout}/>
     ) : (
       <Login onLogin={handleLogin}/>
