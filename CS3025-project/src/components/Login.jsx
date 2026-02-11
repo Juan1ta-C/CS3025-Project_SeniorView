@@ -206,11 +206,7 @@ export default function Login({ onLogin }) {
           {/* Header with Logo */}
           <div className="mb-8 md:mb-10">
             <div className="flex items-center gap-3 mb-8 md:mb-10">
-              <div className="w-10 h-10 sm:w-12 sm:h-12 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded flex items-center justify-center text-white font-bold text-lg sm:text-xl">
-                SS
-              </div>
-              <div className="h-8 w-px bg-cyan-400" />
-              <h1 className="text-cyan-500 text-sm sm:text-base lg:text-lg font-bold tracking-wide">STUDENT-SENIOR ALLIANCE</h1>
+              <img src="src/Banner.png"></img>
             </div>
           </div>
 
@@ -369,7 +365,7 @@ export default function Login({ onLogin }) {
               <button
                 type="submit"
                 disabled={isLoading}
-                className={`bg-cyan-400 hover:bg-cyan-500 text-white px-8 sm:px-12 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base order-1 sm:order-2 ${!isSignUp ? 'sm:ml-auto' : 'w-full sm:w-auto'}`}
+                className={`bg-cyan-400 hover:bg-cyan-500 text-black px-8 sm:px-12 py-3 rounded-full hover:shadow-lg transition-all duration-300 hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed disabled:hover:scale-100 text-sm sm:text-base order-1 sm:order-2 ${!isSignUp ? 'sm:ml-auto' : 'w-full sm:w-auto'}`}
               >
                 {isLoading ? (isSignUp ? 'SIGNING UP...' : 'LOGGING IN...') : (isSignUp ? 'SIGN UP' : 'LOGIN')}
               </button>
