@@ -167,7 +167,7 @@ export default function Login({ onLogin }) {
               className={`px-8 md:px-10 lg:px-12 py-3 md:py-4 rounded-r-full md:rounded-l-none transition-all duration-300 font-semibold ${
                 !isSignUp 
                   ? 'bg-white text-black shadow-lg scale-105' 
-                  : 'bg-white/20 text-white hover:bg-white/30'
+                  : 'bg-white/20 text-black hover:bg-gray/10'
               }`}
               onClick={() => {
                 setIsSignUp(false);
@@ -184,7 +184,7 @@ export default function Login({ onLogin }) {
               className={`px-8 md:px-10 lg:px-12 py-3 md:py-4 rounded-r-full md:rounded-l-none transition-all duration-300 font-semibold ${
                 isSignUp 
                   ? 'bg-white text-black shadow-lg scale-105' 
-                  : 'bg-white/20 text-white hover:bg-white/30'
+                  : 'bg-white/20 text-black hover:bg-white/50'
               }`}
               onClick={() => {
                 setIsSignUp(true);
