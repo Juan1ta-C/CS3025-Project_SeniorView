@@ -34,7 +34,7 @@ return (
 
                         <button className="bg-gradient-to-br from-cyan-400 to-cyan-300 hover:from-cyan-500 hover:to-cyan-400 text-gray-900 font-semibold text-base md:text-lg px-6 py-6 md:py-8 rounded-[30px] md:rounded-[40px] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">Account Settings</button>
 
-                        <button className="bg-gradient-to-br from-cyan-400 to-cyan-300 hover:from-cyan-500 hover:to-cyan-400 text-gray-900 font-semibold text-base md:text-lg px-6 py-6 md:py-8 rounded-[30px] md:rounded-[40px] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105">Messages</button>
+                        <button className="bg-gradient-to-br from-cyan-400 to-cyan-300 hover:from-cyan-500 hover:to-cyan-400 text-gray-900 font-semibold text-base md:text-lg px-6 py-6 md:py-8 rounded-[30px] md:rounded-[40px] shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105" >Messages</button>
 
                     </div>
 

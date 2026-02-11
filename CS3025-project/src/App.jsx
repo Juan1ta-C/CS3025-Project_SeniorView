@@ -8,6 +8,7 @@ export default function App() {
  const [isLoggedIn, setLoggedIn] = useState(false);
  const [credentials, setCredentials] = useState(null); 
 
+
   const handleLogin = (user) => {
     setLoggedIn(true);
     setCredentials(user);
@@ -18,6 +19,8 @@ export default function App() {
   toast.info("Logged out successfully!", {
     description: "You have logged out of your account.",
   });
+
+  
   
  };
 
