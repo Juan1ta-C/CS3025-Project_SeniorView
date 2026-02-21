@@ -5,6 +5,7 @@ import Login from "./components/Login.jsx";
 import Homepage from "./components/Homepage.jsx";
 import Messages from "./components/Messages.jsx";
 import Chat from "./components/Chat.jsx";
+import BulletinBoard from "./components/BulletinBoard.jsx";
 
 export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
