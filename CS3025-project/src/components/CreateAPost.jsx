@@ -11,14 +11,13 @@ export default function CreateAPost ({ isOpen, onClose }) {
     const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 
     const categories = [
-        'Technology',
-        'Transportation',
-        'Grocery Shopping',
-        'Home Maintenance',
+        'Physical Labour',
+        'Personal Assistance',
         'Companionship',
-        'Medical Assistance',
-        'Education/Tutoring',
-        'Cooking/Baking',
+        'Education',
+        'Cooking',
+        'Crafts',
+        'Technology',
         'Other'
     ];
 
