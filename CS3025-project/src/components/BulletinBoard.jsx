@@ -211,9 +211,13 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
           >
             <option value="all">All Categories</option>
             <option value="Physical Labour">Physical Labour</option>
+            <option value="Personal Assistance">Personal Assistance</option>
+            <option value="Companionship">Companionship</option>
+            <option value="Education">Education</option>
             <option value="Cooking">Cooking</option>
             <option value="Crafts">Crafts</option>
             <option value="Technology">Technology</option>
+            <option value="Other">Other</option>
           </select>
         </div>
 
