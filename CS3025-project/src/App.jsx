@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage.jsx";
 import Messages from "./components/Messages.jsx";
 import Chat from "./components/Chat.jsx";
 import BulletinBoard from "./components/BulletinBoard.jsx";
+import Account from "./components/Account.jsx";
 
 export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -92,7 +93,7 @@ export default function App() {
       unread: true,
       contactInfo: newMessage.contactInfo || 'No contact info provided',
     };
-    setSentMessages(prev => [message, ...prev]); // Add to sent messages
+    setMessages(prev => [message, ...prev]); // Add to beginning of array
     toast.success('Message sent!', {
       description: 'Your message has been sent successfully.',
     });
@@ -252,6 +253,14 @@ export default function App() {
           onOpenConversation={openConversation}
           sentMessages={sentMessages}
         />
+        case 'account':
+          return <Account
+          onNavigate={handleNavigate} 
+          onLogout={handleLogout}
+          userName={credentials?.name}
+          userEmail={credentials?.email}
+          messagesCount={messages.filter(m => m.unread).length}
+        />
       case 'homepage':
       default:
         return <Homepage userName={credentials?.name} onLogout={handleLogout} onNavigate={handleNavigate} />
@@ -269,4 +278,3 @@ export default function App() {
     </>
   );
 }
-
