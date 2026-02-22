@@ -190,7 +190,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
         <div className="p-3 md:p-4">
           <button
             onClick={onLogout}
-            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+            className="w-full text-cyan-700 hover:text-cyan-900 font-extralarge text-xs underline"
           >
             Logout
           </button>
@@ -237,17 +237,17 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
 
                   {/* Need Help Section */}
                   <div className="mb-2 md:mb-3">
-                    <p className="text-gray-700 font-semibold mb-1 text-sm md:text-base">I need help with:</p>
+                    <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I need help with:</p>
                     {post.needHelp.map((item, index) => (
-                      <p key={index} className="text-gray-700 text-sm md:text-base">{item}</p>
+                      <p key={index} className="text-gray-700 text-lg md:text-base">{item}</p>
                     ))}
                   </div>
 
                   {/* Can Offer Section */}
                   <div className="mb-3 md:mb-4">
-                    <p className="text-gray-700 font-semibold mb-1 text-sm md:text-base">I can offer:</p>
+                    <p className="text-gray-700 font-semibold mb-1 text-lg md:text-base">I can offer:</p>
                     {post.canOffer.map((item, index) => (
-                      <p key={index} className="text-gray-700 text-sm md:text-base">{item}</p>
+                      <p key={index} className="text-gray-700 text-lg md:text-base">{item}</p>
                     ))}
                   </div>
 
@@ -303,20 +303,20 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       {/* Contact Modal - Responsive */}
       {showContactModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
-          <div className="bg-white rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
+          <div className="bg-cyan-600 rounded-2xl md:rounded-3xl shadow-2xl w-full max-w-lg md:max-w-2xl p-6 md:p-8 relative max-h-[90vh] overflow-y-auto">
             {/* Close Button */}
             <button
               onClick={handleCloseModal}
-              className="absolute top-4 right-4 md:top-6 md:right-6 text-gray-400 hover:text-gray-600 transition-colors"
+              className="absolute top-4 right-4 md:top-6 md:right-6 text-white hover:text-white transition-colors"
             >
               <X className="w-5 h-5 md:w-6 md:h-6" />
             </button>
 
             {/* Modal Header */}
-            <h2 className="text-2xl md:text-3xl font-bold text-gray-900 mb-2">
+            <h2 className="text-2xl md:text-3xl font-bold text-white mb-2">
               Contact {selectedPost?.author}
             </h2>
-            <p className="text-gray-600 mb-4 md:mb-6 text-sm md:text-base">
+            <p className="text-white mb-4 md:mb-6 text-sm md:text-base">
               Regarding: {selectedPost?.title}
             </p>
 
@@ -340,7 +340,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
 
               {/* Title Field */}
               <div>
-                <label htmlFor="title" className="block text-gray-700 font-semibold mb-1 md:mb-2 text-sm md:text-base">
+                <label htmlFor="title" className="block text-white font-semibold mb-1 md:mb-2 text-sm md:text-base">
                   Message Title
                 </label>
                 <input
