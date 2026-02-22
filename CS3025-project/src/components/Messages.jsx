@@ -3,7 +3,7 @@ import { HelpCircle, Menu } from 'lucide-react';
 import { toast } from 'sonner';
 import SingleMessage from './SingleMessage';
 
-export default function Messages({ onNavigate, onLogout, messages, setMessages, conversations, onCreateConversation, onOpenConversation }) {
+export default function Messages({ onNavigate, onLogout, messages, setMessages, conversations, onCreateConversation, onOpenConversation, sentMessages }) {
   const [selectedMessage, setSelectedMessage] = useState(null);
   const [activeTab, setActiveTab] = useState('inbox');
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
@@ -169,6 +169,13 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
             >
               Active Chats {conversations.length > 0 && `(${conversations.length})`}
             </button>
+            <button onClick={() => setActiveTab('sent')} className={`px-8 py-3 rounded-full font-semibold transition-all ${
+                activeTab === 'sent'
+                  ? 'bg-gradient-to-r from-cyan-400 to-cyan-500 text-gray-900 shadow-md'
+                  : 'bg-white text-gray-700 hover:bg-gray-50 shadow-sm'
+              }`}>
+                  Sent Messages {sentMessages.length > 0 && `(${sentMessages.length})`}
+            </button>
           </div>
         </div>
 
@@ -268,6 +275,55 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
                         <span className="font-medium text-xs md:text-sm whitespace-nowrap">
                           {conversation.messages[conversation.messages.length - 1].timestamp}
                         </span>
+                      </div>
+                    </div>
+                  </div>
+                ))}
+              </div>
+            )}
+          </>
+        )}
+
+
+                
+           {activeTab === 'sent' && (
+          <>
+            {sentMessages.length === 0 ? (
+              <div className=" flex max-w-4xl bg-white rounded-3xl shadow-lg p-12 text-center">
+                <p className="text-gray-500 text-lg">No sent messages</p>
+              </div>
+            ) : (
+              <div className="max-w-4xl space-y-6">
+                {[...sentMessages].sort((a, b) => {
+                  // Sort by timestamp - newest first
+                  const getTimestamp = (msg) => {
+                    if (msg.timestamp === 'Just now') return Date.now();
+                    const hours = parseInt(msg.timestamp.match(/(\d+)\s*hour/)?.[1] || '0');
+                    const days = parseInt(msg.timestamp.match(/(\d+)\s*day/)?.[1] || '0');
+                    return Date.now() - (hours * 3600000) - (days * 86400000);
+                  };
+                  return getTimestamp(b) - getTimestamp(a);
+                }).map((message) => (
+                  <div
+                    key={message.id}
+                    className="bg-white rounded-3xl shadow-lg hover:shadow-xl transition-shadow p-6 cursor-pointer"
+                  >
+                    <div className="flex items-start justify-between gap-4">
+                      <div className="flex-1 min-w-0">
+                        {/* Sender Name */}
+                        <div className="inline-block bg-gray-700 text-white px-4 py-1 rounded-full mb-3">
+                          <span className="font-semibold text-sm">{message.sender}</span>
+                        </div>
+
+                        {/* Message Preview */}
+                        <p className="text-gray-500 text-base bg-gray-100 rounded-2xl px-4 py-3">
+                          {message.preview}
+                        </p>
+                      </div>
+
+                      {/* Timestamp */}
+                      <div className="flex-shrink-0 bg-gray-300 text-gray-900 px-4 py-1 rounded-full">
+                        <span className="font-medium text-sm whitespace-nowrap">{message.timestamp}</span>
                       </div>
                     </div>
                   </div>
