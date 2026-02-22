@@ -7,7 +7,8 @@ export default function CreateAPost ({ isOpen, onClose }) {
     const [postType, setPostType] = useState('seeking');
     const [category, setCategory] = useState('');
     const [title, setTitle] = useState('');
-    const [description, setDescription] = useState('');
+    const [seeking, setSeeking] = useState('');
+    const [canOffer, setCanOffer] = useState('');
     const [showCategoryDropdown, setShowCategoryDropdown] = useState(false);
 
     const categories = [
@@ -54,7 +55,8 @@ export default function CreateAPost ({ isOpen, onClose }) {
         setPostType('seeking');
         setCategory('');
         setTitle('');
-        setDescription('');
+        setSeeking('');
+        setCanOffer('');
         setShowCategoryDropdown(false);
         onClose();
     };
@@ -80,46 +82,7 @@ export default function CreateAPost ({ isOpen, onClose }) {
 
         <form onSubmit={handleSubmit} className="space-y-6">
 
-          <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-4">Post Type</h3>
-            <div className="space-y-3">
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div
-                  onClick={() => setPostType('seeking')}
-                  className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${
-                    postType === 'seeking'
-                      ? 'bg-gray-900 border-gray-900'
-                      : 'bg-white border-gray-400 group-hover:border-gray-600'
-                  }`}
-                >
-                  {postType === 'seeking' && (
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  )}
-                </div>
-                <span className="text-xl text-gray-900">Seeking Help</span>
-              </label>
-
-              <label className="flex items-center gap-3 cursor-pointer group">
-                <div
-                  onClick={() => setPostType('offering')}
-                  className={`w-6 h-6 rounded border-2 flex items-center justify-center transition-all ${
-                    postType === 'offering'
-                      ? 'bg-gray-900 border-gray-900'
-                      : 'bg-white border-gray-400 group-hover:border-gray-600'
-                  }`}
-                >
-                  {postType === 'offering' && (
-                    <svg className="w-4 h-4 text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
-                    </svg>
-                  )}
-                </div>
-                <span className="text-xl text-gray-900">Offering Help</span>
-              </label>
-            </div>
-          </div>
+      
 
           <div>
             <h3 className="text-xl font-bold text-gray-900 mb-3">Category</h3>
@@ -167,12 +130,23 @@ export default function CreateAPost ({ isOpen, onClose }) {
           </div>
 
           <div>
-            <h3 className="text-xl font-bold text-gray-900 mb-3">Description</h3>
-            <textarea
-              value={description}
-              onChange={(e) => setDescription(e.target.value)}
-              placeholder="Provide details about what you need or what you can offer"
-              rows={5}
+            <h3 className="text-xl font-bold text-gray-900 mb-3">I need help with: </h3>
+            <input
+              type="text"
+              value={seeking}
+              onChange={(e) => setSeeking(e.target.value)}
+              placeholder="Provide details about what you need help with"
+              className="w-full bg-white rounded-2xl px-5 py-4 text-gray-900 text-lg placeholder:text-gray-500 shadow-md focus:shadow-lg outline-none resize-none transition-shadow"
+            />
+          </div>
+
+          <div>
+            <h3 className="text-xl font-bold text-gray-900 mb-3">I can offer: </h3>
+            <input
+              type="text"
+              value={canOffer}
+              onChange={(e) => setCanOffer(e.target.value)}
+              placeholder="Provide details about what you can offer in exchange for help"
               className="w-full bg-white rounded-2xl px-5 py-4 text-gray-900 text-lg placeholder:text-gray-500 shadow-md focus:shadow-lg outline-none resize-none transition-shadow"
             />
           </div>

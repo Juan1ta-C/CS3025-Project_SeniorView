@@ -6,6 +6,7 @@ import Homepage from "./components/Homepage.jsx";
 import Messages from "./components/Messages.jsx";
 import Chat from "./components/Chat.jsx";
 import BulletinBoard from "./components/BulletinBoard.jsx";
+import AccountSettings from "./components/AccountSettings.jsx";
 
 export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -249,6 +250,14 @@ export default function App() {
           conversations={conversations}
           onCreateConversation={createConversation}
           onOpenConversation={openConversation}
+        />
+        case 'accountsettings':
+          return <AccountSettings
+          onNavigate={handleNavigate} 
+          onLogout={handleLogout}
+          userName={credentials?.name}
+          userEmail={credentials?.email}
+          messagesCount={messages.filter(m => m.unread).length}
         />
       case 'homepage':
       default:
