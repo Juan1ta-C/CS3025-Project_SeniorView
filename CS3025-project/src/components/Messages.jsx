@@ -48,7 +48,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
 
   return (
     <div className="min-h-screen w-full bg-gradient-to-br from-gray-50 to-white flex relative">
-      {/* Mobile Menu Button */}
+     
       <button
         onClick={toggleSidebar}
         className="lg:hidden fixed top-4 left-4 z-50 bg-cyan-400 text-white p-3 rounded-full shadow-lg hover:bg-cyan-500 transition-all"
@@ -56,7 +56,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
         <Menu className="w-6 h-6" />
       </button>
 
-      {/* Overlay for mobile when sidebar is open */}
+      
       {isSidebarOpen && (
         <div
           className="lg:hidden fixed inset-0 bg-black bg-opacity-50 z-40"
@@ -64,7 +64,7 @@ export default function Messages({ onNavigate, onLogout, messages, setMessages, 
         />
       )}
 
-      {/* Left Sidebar - Responsive */}
+    
       <div className={`
         fixed lg:static w-64 md:w-72 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200 
         flex flex-col h-screen transition-all duration-300 z-50

@@ -61,7 +61,6 @@ export default function App() {
 
   const [conversations, setConversations] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
-  const [sentMessages, setSentMessages] = useState([]);
 
   const handleLogin = (user) => {
     setLoggedIn(true);
@@ -92,7 +91,7 @@ export default function App() {
       unread: true,
       contactInfo: newMessage.contactInfo || 'No contact info provided',
     };
-    setSentMessages(prev => [message, ...prev]); // Add to sent messages
+    setMessages(prev => [message, ...prev]); // Add to beginning of array
     toast.success('Message sent!', {
       description: 'Your message has been sent successfully.',
     });
@@ -250,7 +249,6 @@ export default function App() {
           conversations={conversations}
           onCreateConversation={createConversation}
           onOpenConversation={openConversation}
-          sentMessages={sentMessages}
         />
       case 'homepage':
       default:
