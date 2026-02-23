@@ -3,7 +3,7 @@ import {ChevronDown} from 'lucide-react';
 import {toast} from 'sonner';
 
 
-export default function CreateAPost ({ isOpen, onClose }) {
+export default function CreateAPost ({ isOpen, onClose, onCreate }) {
     const [postType, setPostType] = useState('seeking');
     const [category, setCategory] = useState('');
     const [title, setTitle] = useState('');
@@ -22,32 +22,41 @@ export default function CreateAPost ({ isOpen, onClose }) {
         'Other'
     ];
 
-
     const handleSubmit = (e) => {
-        e.preventDefault();
+      e.preventDefault();
 
+      if (!category) {
+        toast.error('Please select a category.');
+        return;
+      }
 
-        if (!category) {
-            toast.error('Please select a category.');
-            return;
-        }
+      if (!title.trim()) {
+        toast.error('Please enter a post title.');
+        return;
+      }
 
-        if (!title.trim()) {
-            toast.error('Please enter a post title.');
-            return;
-        }
+      if (!seeking.trim()) {
+        toast.error('Please enter what you need help with.');
+        return;
+      }
 
-        if (!description.trim()) {
-            toast.error('Please enter a description.');
-            return;
-        }
+      if (!canOffer.trim()) {
+        toast.error('Please enter what you can offer.');
+        return;
+      }
 
+      onCreate({
+        title,
+        category,
+        seeking,
+        canOffer,
+      });
 
-        toast.success('Post created!', {
-            description: `Your ${postType === 'seeking' ? 'help request' : 'help offer'} has been posted to the community!`,
-        });
+      toast.success('Post created!', {
+        description: 'Your post has been posted to the community!',
+      });
 
-        handleClose();
+      handleClose();
     };
 
 
