@@ -272,6 +272,7 @@ export default function App() {
           onOpenConversation={openConversation}
           sentMessages={sentMessages}
         />
+
       case 'account':
         return <Account
           onNavigate={handleNavigate} 
@@ -280,6 +281,7 @@ export default function App() {
           userEmail={credentials?.email}
           messagesCount={messages.filter(m => m.unread).length}
         />
+  
       case 'yourPosts':
         return <CurrentPosts
           onNavigate={handleNavigate}
@@ -289,6 +291,7 @@ export default function App() {
           onDeletePost={handleDeletePost}
           messagesCount={messages.filter(m => m.unread).length}
         />
+
       case 'homepage':
       default:
         return <Homepage userName={credentials?.name} onLogout={handleLogout} onNavigate={handleNavigate} />
@@ -306,4 +309,3 @@ export default function App() {
     </>
   );
 }
-

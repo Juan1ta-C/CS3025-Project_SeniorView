@@ -62,7 +62,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
     }
   };
 
-  const handleViewPosts = () => {
+  const handleViewPosts = () => 
     onNavigate('currentPosts');
   };
 
@@ -124,20 +124,12 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
         />
       )}
 
-      {/* Left Sidebar - Fixed position, no scroll */}
+      {/* Left Sidebar - Responsive */}
       <div className={`
-        fixed lg:static w-64 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200 
+        fixed lg:static w-64 md:w-72 bg-gradient-to-br from-cyan-400 via-cyan-300 to-cyan-200
         flex flex-col h-screen transition-all duration-300 z-50
         ${isSidebarOpen ? 'left-0' : '-left-64 lg:left-0'}
       `}>
-        {/* Close button for mobile */}
-        <button
-          onClick={toggleSidebar}
-          className="lg:hidden absolute top-4 right-4 text-gray-700 hover:text-gray-900"
-        >
-          <X className="w-6 h-6" />
-        </button>
-
         {/* SSA Logo */}
         <div className="p-4 md:p-6">
           <div className="flex flex-col items-center">
@@ -145,24 +137,18 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
           </div>
         </div>
 
-        {/* Navigation Buttons - Fixed section */}
-        <div className="flex-1 flex flex-col px-3 md:px-4 py-4 md:py-8 space-y-3 md:space-y-4 overflow-y-auto">
+        {/* Navigation Buttons */}
+        <div className="flex-1 flex flex-col px-3 md:px-4 py-4 md:py-8 space-y-3 md:space-y-4">
           <button
-            onClick={() => {
-              onNavigate('bulletin');
-              setIsSidebarOpen(false);
-            }}
-            className="bg-white/90 hover:bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md hover:shadow-lg text-sm md:text-base flex-shrink-0"
+            onClick={() => { onNavigate('bulletin'); setIsSidebarOpen(false); }}
+            className="bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md text-sm md:text-base"
           >
             BULLETIN BOARD
           </button>
 
-          <div className="relative flex-shrink-0">
+          <div className="relative">
             <button
-              onClick={() => {
-                onNavigate('messaging');
-                setIsSidebarOpen(false);
-              }}
+              onClick={() => { onNavigate('messaging'); setIsSidebarOpen(false); }}
               className="w-full bg-white/90 hover:bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md hover:shadow-lg text-sm md:text-base"
             >
               MESSAGING
@@ -173,23 +159,33 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
           </div>
 
           <button
-            onClick={() => {
-              onNavigate('account');
-              setIsSidebarOpen(false);
-            }}
-            className="bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left shadow-lg text-sm md:text-base flex-shrink-0"
+            onClick={() => { onNavigate('account'); setIsSidebarOpen(false); }}
+            className="bg-white/90 hover:bg-white text-gray-900 font-semibold py-3 md:py-4 px-4 md:px-6 rounded-2xl md:rounded-3xl text-left transition-all shadow-md hover:shadow-lg text-sm md:text-base"
           >
             ACCOUNT
           </button>
         </div>
 
-        {/* Need Help Button - Fixed at bottom */}
-        <div className="p-3 md:p-4 flex-shrink-0">
-          <button className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg">
+        {/* Need Help Button */}
+        <div className="p-3 md:p-4">
+          <button
+            onClick={() => console.log('Help requested')}
+            className="w-full flex items-center justify-center gap-2 bg-white/90 hover:bg-white text-gray-900 font-medium py-2 md:py-3 px-3 md:px-4 rounded-full transition-all shadow-md hover:shadow-lg"
+          >
             <div className="w-5 h-5 md:w-6 md:h-6 bg-gray-400 rounded-full flex items-center justify-center text-white">
               <HelpCircle className="w-3 h-3 md:w-4 md:h-4" />
             </div>
             <span className="text-xs md:text-sm">Need help?</span>
+          </button>
+        </div>
+
+        {/* Logout */}
+        <div className="p-3 md:p-4">
+          <button
+            onClick={onLogout}
+            className="w-full text-cyan-700 hover:text-cyan-900 font-large text-xs underline"
+          >
+            Logout
           </button>
         </div>
       </div>
@@ -197,9 +193,9 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
       {/* Main Content Area - Scrollable */}
       <div className="flex-1 h-screen overflow-y-auto mt-16 lg:mt-0">
         <div className="p-4 sm:p-6 md:p-8 lg:p-12">
-          <div className="max-w-6xl mx-auto">
+          <div className="max-w-9xl mx-auto">
             {/* Personal Information Section */}
-            <div className="bg-gradient-to-r from-cyan-100 to-cyan-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8 mb-4 sm:mb-6 relative">
+            <div className="bg-gradient-to-r from-cyan-100 to-cyan-200 rounded-2xl sm:rounded-3xl p-4 md:p-6 lg:p-8 mb-4 sm:mb-6 relative">
               {/* Logout Button - Responsive positioning */}
               <button
                 onClick={onLogout}
@@ -212,21 +208,25 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
 
               <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 sm:gap-8">
                 {/* Left: User Info Display */}
-                <div className="flex flex-col sm:flex-row items-start gap-4 sm:gap-6">
-                  {/* Avatar Circle */}
-                  <div className="w-20 h-20 sm:w-24 sm:h-24 md:w-28 md:h-28 lg:w-32 lg:h-32 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0 mx-auto sm:mx-0">
-                    <span className="text-white text-2xl sm:text-3xl md:text-4xl font-bold">{getInitials()}</span>
+                <div className="flex flex-col sm:flex-row items-center justify-center gap-2">
+                  {/* Avatar */}
+                  <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 lg:w-56 lg:h-56 bg-gradient-to-br from-cyan-400 to-cyan-600 rounded-full flex items-center justify-center flex-shrink-0">
+                    <span className="text-white text-4xl sm:text-5xl md:text-9xl font-bold">
+                      {getInitials()}
+                    </span>
                   </div>
 
                   {/* User Details */}
-                  <div className="flex-1 text-center sm:text-left">
+                  <div className="flex-1 text-left">
                     <h3 className={`${currentHeadingSize} font-bold text-gray-900 mb-2`}>
                       {editInfo.firstName} {editInfo.lastName}
                     </h3>
                     <p className={`${currentTextSize} text-gray-700 mb-2`}>
                       <span className="font-semibold">Account Type:</span> Student
                     </p>
-                    <p className={`${currentTextSize} text-gray-700 break-words`}>{editInfo.email}</p>
+                    <p className={`${currentTextSize} text-gray-700 break-words`}>
+                      {editInfo.email}
+                    </p>
                   </div>
                 </div>
 
@@ -267,7 +267,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
             </div>
 
             {/* Bottom Row: Change Password and Preferences */}
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-4 sm:mb-6">
+            <div className="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6 mb-1 sm:mb-2">
               {/* Change Password Section */}
               <div className="bg-gradient-to-r from-cyan-100 to-cyan-200 rounded-2xl sm:rounded-3xl p-4 sm:p-6 md:p-8">
                 <h2 className={`${currentHeadingSize} font-bold text-gray-900 mb-4 sm:mb-6`}>Change Password</h2>
@@ -300,13 +300,6 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                     />
                   </div>
                 </div>
-
-                <button
-                  onClick={() => onNavigate('yourPosts')}
-                  className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all shadow-md`}
-                >
-                  VIEW YOUR POSTS
-                </button>
               </div>
 
               {/* Preferences Section */}
@@ -374,14 +367,23 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                     </button>
                   </div>
                 </div>
-
-                <button
-                  onClick={handleSave}
-                  className={`${currentTextSize} mt-4 sm:mt-6 w-full bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-2 sm:py-3 px-6 sm:px-8 rounded-full transition-all shadow-md`}
-                >
-                  SAVE
-                </button>
               </div>
+            </div>
+
+            <div className="flex justify-between w-full mb-4">
+              <button
+                onClick={() => onNavigate('yourPosts')}
+                className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all shadow-md`}
+              >
+                VIEW YOUR POSTS
+              </button>
+
+              <button
+                onClick={handleSave}
+                className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all shadow-md`}
+              >
+                SAVE
+              </button>
             </div>
 
             {/* Danger Zone Section */}
