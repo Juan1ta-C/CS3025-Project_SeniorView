@@ -62,8 +62,8 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
     }
   };
 
-  const handleViewPosts = () => {
-    onNavigate('bulletin');
+  const handleViewPosts = () => 
+    onNavigate('currentPosts');
   };
 
   const toggleSidebar = () => {
@@ -372,7 +372,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
 
             <div className="flex justify-between w-full mb-4">
               <button
-                onClick={handleViewPosts}
+                onClick={() => onNavigate('yourPosts')}
                 className={`${currentTextSize} mt-4 sm:mt-6 w-full sm:w-auto bg-cyan-400 hover:bg-cyan-500 text-gray-900 font-bold py-3 sm:py-4 px-8 sm:px-10 rounded-full transition-all shadow-md`}
               >
                 VIEW YOUR POSTS
