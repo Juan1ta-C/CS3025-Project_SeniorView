@@ -7,6 +7,7 @@ import Messages from "./components/Messages.jsx";
 import Chat from "./components/Chat.jsx";
 import BulletinBoard from "./components/BulletinBoard.jsx";
 import Account from "./components/Account.jsx";
+import CurrentPosts from "./components/CurrentPosts.jsx";
 
 export default function App() {
   const [isLoggedIn, setLoggedIn] = useState(false);
@@ -63,6 +64,7 @@ export default function App() {
   const [conversations, setConversations] = useState([]);
   const [activeConversation, setActiveConversation] = useState(null);
   const [sentMessages, setSentMessages] = useState([]);
+  const [posts, setPosts] = useState([]);
 
   const handleLogin = (user) => {
     setLoggedIn(true);
@@ -76,6 +78,18 @@ export default function App() {
     toast.info("Logged out successfully!", {
       description: "You have logged out of your account.",
     });
+  };
+
+  const handleEditPost = (postId, updatedPost) => {
+    setPosts(prev =>
+      prev.map(post => post.id === postId ? updatedPost : post)
+    );
+  };
+
+  const handleDeletePost = (postId) => {
+    setPosts(prev =>
+      prev.filter(post => post.id !== postId)
+    );
   };
 
   const handleNavigate = (page) => {
@@ -241,7 +255,12 @@ export default function App() {
 
     switch (currentPage) {
       case 'bulletin':
-        return <BulletinBoard onNavigate={handleNavigate} onLogout={handleLogout} onAddMessage={addMessage} messagesCount={messages.filter(m => m.unread).length} />
+        return <BulletinBoard 
+          onNavigate={handleNavigate} 
+          onLogout={handleLogout} 
+          onAddMessage={addMessage} 
+          messagesCount={messages.filter(m => m.unread).length} 
+        />
       case 'messaging': 
         return <Messages 
           onNavigate={handleNavigate} 
@@ -253,12 +272,21 @@ export default function App() {
           onOpenConversation={openConversation}
           sentMessages={sentMessages}
         />
-        case 'account':
-          return <Account
+      case 'account':
+        return <Account
           onNavigate={handleNavigate} 
           onLogout={handleLogout}
           userName={credentials?.name}
           userEmail={credentials?.email}
+          messagesCount={messages.filter(m => m.unread).length}
+        />
+      case 'yourPosts':
+        return <CurrentPosts
+          onNavigate={handleNavigate}
+          onLogout={handleLogout}
+          posts={posts}
+          onEditPost={handleEditPost}
+          onDeletePost={handleDeletePost}
           messagesCount={messages.filter(m => m.unread).length}
         />
       case 'homepage':
