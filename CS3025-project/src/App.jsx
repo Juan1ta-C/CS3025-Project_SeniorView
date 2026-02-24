@@ -21,7 +21,7 @@ export default function App() {
       fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week?',
       timestamp: '5 hours ago',
       unread: false,
-      contactInfo: 'melissa.smith@email.com',
+      
     },
     {
       id: 2,
@@ -30,7 +30,7 @@ export default function App() {
       fullMessage: 'Hello Sharon, I wanted to contact you regarding some knitting. I noticed you mentioned you knit beautiful sweaters and I am just getting started with knitting. I would really appreciate some guidance on choosing the right yarn and needles for a beginner project. Do you offer any knitting lessons?',
       timestamp: '10 hours ago',
       unread: true,
-      contactInfo: 'jane.doe@email.com',
+      
     },
     {
       id: 3,
@@ -39,7 +39,7 @@ export default function App() {
       fullMessage: 'Hello Sharon, I wanted to contact you regarding some cooking. I heard you make the most amazing Italian dishes! I am hosting a dinner party next month and would love to get some of your secret recipes, especially for your famous lasagna. Would you be willing to share some tips?',
       timestamp: '23 hours ago',
       unread: true,
-      contactInfo: 'paige.bueckers@email.com',
+      
     },
     {
       id: 4,
@@ -48,7 +48,7 @@ export default function App() {
       fullMessage: 'Hello Sharon, I wanted to contact you regarding some needlepoint. Your needlepoint work is absolutely stunning! I saw the photo you shared of the floral cushion cover and I am inspired to learn this craft. Could we perhaps meet up so you could show me the basic stitches and techniques?',
       timestamp: '14 hours ago',
       unread: true,
-      contactInfo: 'sarah.strong@email.com',
+      
     },
     {
       id: 5,
@@ -57,7 +57,7 @@ export default function App() {
       fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking using cottage cheese. I have recently become very interested in healthier baking options and I understand you have some wonderful recipes that incorporate cottage cheese. I would love to learn more about this technique and maybe even bake together!',
       timestamp: '18 hours ago',
       unread: true,
-      contactInfo: 'azzi.fudd@email.com',
+      
     },
   ]);
 
