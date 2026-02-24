@@ -20,7 +20,7 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
       title: 'ENGLISH ESSAY',
       needHelp: ['Editing my english essay'],
       canOffer: ['A home cooked meal'],
-      author: 'Paige',
+      author: 'PAIGE',
       userType: 'Student',
       timestamp: '2 hours ago',
       category: 'Education',
