@@ -17,13 +17,13 @@ export default function BulletinBoard({ onNavigate, onLogout, onAddMessage, mess
   const posts = [
     {
       id: 1,
-      title: 'YARD WORK',
-      needHelp: ['Raking my leaves'],
+      title: 'ENGLISH ESSAY',
+      needHelp: ['Editing my english essay'],
       canOffer: ['A home cooked meal'],
-      author: 'SHARON',
-      userType: 'Senior',
+      author: 'Paige',
+      userType: 'Student',
       timestamp: '2 hours ago',
-      category: 'Physical Labour',
+      category: 'Education',
     },
     {
       id: 2,
