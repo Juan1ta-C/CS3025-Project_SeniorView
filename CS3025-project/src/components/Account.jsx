@@ -247,7 +247,7 @@ export default function Account({ onNavigate, onLogout, userName, userEmail, mes
                       </h3>
                       <div className="inline-block bg-cyan-100 px-4 py-2 rounded-full">
                         <p className={`${currentTextSize} text-cyan-700 font-semibold`}>
-                          Student Account
+                          Senior Account
                         </p>
                       </div>
                       <p className={`${currentTextSize} text-gray-600`}>
