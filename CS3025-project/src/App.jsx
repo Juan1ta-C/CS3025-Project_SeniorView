@@ -16,12 +16,11 @@ export default function App() {
   const [messages, setMessages] = useState([
     {
       id: 1,
-      sender: 'Melissa Smith',
-      preview: 'Hello Sharon, I wanted to contact you regarding some baking...',
-      fullMessage: 'Hello Sharon, I wanted to contact you regarding some baking. I saw your post about making traditional sourdough bread and I would love to learn from you. I have been trying to perfect my starter for months now. Would you be available for a baking session sometime this week?',
+      sender: 'Will Smith',
+      preview: 'Hello Joe, I wanted to contact you regarding the yard work...',
+      fullMessage: 'Hello Joe, I wanted to contact you regarding the yard work you need help with. I have experience with landscaping and gardening, and I would be happy to lend a hand. I can help with tasks such as mowing the lawn, trimming bushes, and planting flowers. Please let me know if you would like to discuss further or schedule a time for me to come by.',
       timestamp: '5 hours ago',
       unread: false,
-      contactInfo: 'melissa.smith@email.com',
     },
     {
       id: 2,
